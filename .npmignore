@@ -5,5 +5,3 @@ src/
 
 # 忽略指定文件
 webpack.config.js
-package.json
-package-lock.json
