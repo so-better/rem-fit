@@ -1,18 +1,18 @@
 class RemFit {
-	constructor(proportion,useDpr) {
-		this.proportion = proportion;//屏幕总宽度rem值
-		this.useDpr = useDpr;//是否考虑dpr
+	constructor(proportion, useDpr) {
+		this.proportion = proportion; //屏幕总宽度rem值
+		this.useDpr = useDpr; //是否考虑dpr
 		//如果dpr未赋值，则默认为true
-		if(typeof(this.useDpr) != 'boolean'){
+		if (typeof(this.useDpr) != 'boolean') {
 			this.useDpr = true;
 		}
 	}
-	
-	set(){
+
+	set() {
 		var html = document.documentElement; //html根节点
-		var dpr = 1;//默认dpr为1
-		if(this.useDpr){
-			dpr = Math.round(window.devicePixelRatio || 1);//获取设备dpr
+		var dpr = 1; //默认dpr为1
+		if (this.useDpr) {
+			dpr = Math.round(window.devicePixelRatio || 1); //获取设备dpr
 		}
 		var scale = 1 / dpr;
 		var metaEle = document.querySelector('meta[name="viewport"]') //meta元素
@@ -33,10 +33,15 @@ class RemFit {
 		var fontSize = window.innerWidth / this.proportion;
 		html.setAttribute("data-standard", this.proportion);
 		html.setAttribute("data-dpr", dpr); //将dpr绑定到html元素上
-		html.style.fontSize = Math.round(fontSize) + 'px';
+		html.style.setProperty('font-size', fontSize + 'px', 'important');
+		
+		//针对部分安卓微信浏览器html根节点字体大小不符合设定值的解决
+		var realFontSize = parseFloat(window.getComputedStyle(document.getElementsByTagName("html")[0]).fontSize);
+		if(fontSize != realFontSize){
+			html.style.setProperty('font-size',fontSize / (realFontSize / fontSize) + 'px','important')
+		}
 	}
-	
+
 }
 
 module.exports = RemFit
-
