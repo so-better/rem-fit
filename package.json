@@ -1,6 +1,6 @@
 {
 	"name": "rem-fit",
-	"version": "1.2.8",
+	"version": "1.2.9",
 	"description": "一款使用rem适配web页面的轻量级插件",
 	"main": "dist/rem-fit.js",
 	"private": false,

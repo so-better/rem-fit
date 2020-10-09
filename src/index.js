@@ -34,12 +34,6 @@ class RemFit {
 		html.setAttribute("data-standard", this.proportion);
 		html.setAttribute("data-dpr", dpr); //将dpr绑定到html元素上
 		html.style.setProperty('font-size', fontSize + 'px', 'important');
-		
-		//针对部分安卓微信浏览器html根节点字体大小不符合设定值的解决
-		var realFontSize = parseFloat(window.getComputedStyle(document.getElementsByTagName("html")[0]).fontSize);
-		if(fontSize != realFontSize){
-			html.style.setProperty('font-size',fontSize / (realFontSize / fontSize) + 'px','important')
-		}
 	}
 
 }
