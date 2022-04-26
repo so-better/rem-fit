@@ -1,16 +1,65 @@
 class RemFit {
     constructor(proportion, useDpr) {
-        this.proportion = proportion //屏幕总宽度rem值
-        this.useDpr = useDpr //是否考虑dpr
-        //如果dpr未赋值，则默认为true
+        this.proportion = proportion
+        this.useDpr = useDpr
+        this._checkParams()
+    }
+
+    /**
+     * 校验参数
+     */
+    _checkParams() {
+        if (
+            (typeof this.proportion != 'number' || isNaN(this.proportion)) &&
+            !Array.isArray(this.proportion)
+        ) {
+            throw new TypeError('The first argument must be a number or array')
+        }
         if (typeof this.useDpr != 'boolean') {
+            //如果dpr未赋值，则默认为true
             this.useDpr = false
         }
+        //如果是数组
+        if (Array.isArray(this.proportion)) {
+            const pass = this.proportion.every(item => {
+                if (item && typeof item == 'object') {
+                    if (
+                        typeof item.breakpoint == 'number' &&
+                        !isNaN(item.breakpoint) &&
+                        item.breakpoint >= 0
+                    ) {
+                        if (
+                            typeof item.proportion == 'number' &&
+                            !isNaN(item.proportion) &&
+                            item.proportion > 0
+                        ) {
+                            return true
+                        }
+                    }
+                }
+                return false
+            })
+            if (!pass) {
+                throw new TypeError('Invalid arguments')
+            }
+        }
+    }
+
+    /**
+     * 设置根元素字体大小
+     */
+    _setFontSize(proportion) {
+        let fontSize = Number((window.innerWidth / proportion).toFixed(2))
+        document.documentElement.setAttribute('data-standard', proportion)
+        document.documentElement.style.setProperty(
+            'font-size',
+            fontSize + 'px',
+            'important'
+        )
     }
 
     //进行适配设置
     init() {
-        let html = document.documentElement //html根节点
         let dpr = 1 //默认dpr为1
         if (this.useDpr) {
             dpr = Math.round(window.devicePixelRatio || 1) //获取设备dpr
@@ -42,17 +91,22 @@ class RemFit {
                     scale
             )
         }
-        //设置根元素字体大小
-        let fontSize = Number((window.innerWidth / this.proportion).toFixed(2))
-        html.setAttribute('data-standard', this.proportion)
-        html.setAttribute('data-dpr', dpr) //将dpr绑定到html元素上
-        html.style.setProperty('font-size', fontSize + 'px', 'important')
+
+        //proportion为数组
+        if (Array.isArray(this.proportion)) {
+            for (let item of this.proportion) {
+                if (window.innerWidth >= item.breakpoint) {
+                    this._setFontSize(item.proportion)
+                }
+            }
+        } else {
+            this._setFontSize(this.proportion)
+        }
+        document.documentElement.setAttribute('data-dpr', dpr) //将dpr绑定到html元素上
     }
 
     //移除适配
     static remove() {
-        //html根节点
-        let html = document.documentElement
         //meta元素
         let metaEle = document.querySelector('meta[name="viewport"]')
         //如果meta元素存在，则重置视口
@@ -63,9 +117,9 @@ class RemFit {
             )
         }
         //清除对根元素的设置
-        html.removeAttribute('data-standard')
-        html.removeAttribute('data-dpr')
-        html.style.fontSize = ''
+        document.documentElement.removeAttribute('data-standard')
+        document.documentElement.removeAttribute('data-dpr')
+        document.documentElement.style.fontSize = ''
     }
 }
 

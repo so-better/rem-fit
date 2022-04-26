@@ -1,21 +1,56 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" /> -->
-		<title>Rem-Fit</title>
-	</head>
-	<body>
-		<p>Hello World</p>
-		<div onclick="change()">更改适配方案</div>
-	</body>
-	<script src="../dist/rem-fit.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript">
-		let remFit = new RemFit(7.5,true);
-		remFit.init()
-		
-		function change(){
-			RemFit.remove();
-		}
-	</script>
+    <head>
+        <meta charset="utf-8" />
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" /> -->
+        <title>Rem-Fit</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/npm/mvi-web/lib/mvi.css"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/mvi-web/lib/mvi.umd.min.js"
+            type="text/javascript"
+            charset="utf-8"
+        ></script>
+    </head>
+    <body>
+        <div id="app">
+            <m-button @click="remove">按钮</m-button>
+        </div>
+    </body>
+    <script
+        src="../dist/rem-fit.js"
+        type="text/javascript"
+        charset="utf-8"
+    ></script>
+    <script type="text/javascript">
+        const breakpoints = [
+            {
+                breakpoint: 0,
+                proportion: 7.5
+            },
+            {
+                breakpoint: 1000,
+                proportion: 18
+            }
+        ]
+        let remFit = new RemFit(breakpoints, true)
+        remFit.init()
+
+        new Vue({
+            el: '#app',
+            methods: {
+                remove() {
+                    RemFit.remove()
+                }
+            }
+        })
+
+        window.onresize = () => {
+            remFit.init()
+        }
+    </script>
 </html>
