@@ -49,13 +49,20 @@ class RemFit {
      * 设置根元素字体大小
      */
     _setFontSize(proportion) {
-        let fontSize = Number((window.innerWidth / proportion).toFixed(2))
+        let fontSize = Number((this._getScreenWidth() / proportion).toFixed(2))
         document.documentElement.setAttribute('data-standard', proportion)
         document.documentElement.style.setProperty(
             'font-size',
             fontSize + 'px',
             'important'
         )
+    }
+
+    //获取屏幕宽度
+    _getScreenWidth() {
+        return document.documentElement.offsetWidth > window.innerWidth
+            ? document.documentElement.offsetWidth
+            : window.innerWidth
     }
 
     //进行适配设置
@@ -94,7 +101,7 @@ class RemFit {
         //proportion为数组
         if (Array.isArray(this.proportion)) {
             for (let item of this.proportion) {
-                if (window.innerWidth >= item.breakpoint) {
+                if (this._getScreenWidth() >= item.breakpoint) {
                     this._setFontSize(item.proportion)
                 }
             }
