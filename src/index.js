@@ -91,20 +91,17 @@ class RemFit {
                     scale
             )
         }
-        document.documentElement.setAttribute('data-dpr', dpr) //将dpr绑定到html元素上
-        //添加延时器，在部分机型上会出现视口改变但是设备宽度还没有改变的bug
-        setTimeout(() => {
-            //proportion为数组
-            if (Array.isArray(this.proportion)) {
-                for (let item of this.proportion) {
-                    if (window.innerWidth >= item.breakpoint) {
-                        this._setFontSize(item.proportion)
-                    }
+        //proportion为数组
+        if (Array.isArray(this.proportion)) {
+            for (let item of this.proportion) {
+                if (window.innerWidth >= item.breakpoint) {
+                    this._setFontSize(item.proportion)
                 }
-            } else {
-                this._setFontSize(this.proportion)
             }
-        }, 50)
+        } else {
+            this._setFontSize(this.proportion)
+        }
+        document.documentElement.setAttribute('data-dpr', dpr) //将dpr绑定到html元素上
     }
 
     //移除适配
