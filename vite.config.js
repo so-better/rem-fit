@@ -26,7 +26,7 @@ export default defineConfig({
 		minify: 'terser',
 		lib: {
 			entry: path.resolve(__dirname, 'src/index.js'),
-			name: 'rem-fit',
+			name: 'RemFit',
 			fileName: format => `rem-fit.${format}.js`
 		},
 		rollupOptions: {
