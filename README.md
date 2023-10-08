@@ -1,15 +1,3 @@
-#### rem-fit
+#### 一个 rem 适配解决方案的轻量级 JS 库
 
-> 一款针对 rem 适配页面的轻量级插件库，用以动态设置 HTML 根节点的字体大小
-
-```
-npm install rem-fit
-```
-
-```
-import RemFit from "rem-fit"
-var remFit = new RemFit(7.5,true);
-remFit.set();
-```
-
-### 具体使用方法请到我的网站查看：[rem-fit](https://www.mvi-web.cn/library/9)
+> 具体使用方法请参阅[：rem-fit](https://www.mvi-web.cn/library/rem-fit)
