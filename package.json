@@ -1,6 +1,6 @@
 {
 	"name": "rem-fit",
-	"version": "1.5.8",
+	"version": "1.5.9",
 	"private": false,
 	"type": "module",
 	"author": "lingkai",
@@ -20,9 +20,7 @@
 		"less": "^3.0.4",
 		"less-loader": "^5.0.0",
 		"terser": "^5.16.9",
-		"unplugin-auto-import": "^0.15.3",
-		"vite": "^4.3.2",
-		"vite-plugin-vue-setup-extend": "^0.4.0"
+		"vite": "^4.3.2"
 	},
 	"browserslist": [
 		"> 1%",
@@ -31,6 +29,6 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/lovelin0523/rem-fit"
+		"url": "https://github.com/ling0523/rem-fit"
 	}
 }
