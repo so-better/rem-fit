@@ -1,9 +1,9 @@
 {
 	"name": "rem-fit",
-	"version": "1.5.9",
+	"version": "1.6.0",
 	"private": false,
 	"type": "module",
-	"author": "lingkai",
+	"author": "ling0523",
 	"main": "lib/rem-fit.umd.js",
 	"module": "lib/rem-fit.es.js",
 	"license": "MIT",
