@@ -1,19 +1,20 @@
 class RemFit {
-	constructor(proportion, useDpr) {
+	proportion: number
+	useDpr?: boolean
+
+	constructor(proportion: number, useDpr?: boolean) {
 		this.proportion = proportion
 		this.useDpr = useDpr
 		this.__checkParams()
 	}
 
-	/**
-	 * 校验参数
-	 */
-	__checkParams() {
+	//校验参数
+	private __checkParams() {
 		if ((typeof this.proportion != 'number' || isNaN(this.proportion)) && !Array.isArray(this.proportion)) {
 			throw new TypeError('The first argument must be a number or array')
 		}
+		//如果dpr未赋值，则默认为true
 		if (typeof this.useDpr != 'boolean') {
-			//如果dpr未赋值，则默认为true
 			this.useDpr = false
 		}
 		//如果是数组
@@ -34,23 +35,22 @@ class RemFit {
 		}
 	}
 
-	/**
-	 * 设置根元素字体大小
-	 */
-	__setFontSize(proportion) {
+	//设置根元素字体大小
+	private __setFontSize(proportion: number) {
 		let fontSize = Number((this.__getScreenWidth() / proportion).toFixed(2))
-		document.documentElement.setAttribute('data-standard', proportion)
+		document.documentElement.setAttribute('data-standard', proportion + '')
 		document.documentElement.style.setProperty('font-size', fontSize + 'px', 'important')
 	}
 
 	//获取屏幕宽度
-	__getScreenWidth() {
+	private __getScreenWidth() {
 		return document.documentElement.offsetWidth > window.innerWidth ? document.documentElement.offsetWidth : window.innerWidth
 	}
 
 	//进行适配设置
 	init() {
-		let dpr = 1 //默认dpr为1
+		//默认dpr为1
+		let dpr = 1
 		if (this.useDpr) {
 			dpr = Math.round(window.devicePixelRatio || 1) //获取设备dpr
 		}
@@ -75,7 +75,8 @@ class RemFit {
 		} else {
 			this.__setFontSize(this.proportion)
 		}
-		document.documentElement.setAttribute('data-dpr', dpr) //将dpr绑定到html元素上
+		//将dpr绑定到html元素上
+		document.documentElement.setAttribute('data-dpr', dpr + '')
 	}
 
 	//移除适配
