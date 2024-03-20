@@ -1,8 +1,12 @@
-class RemFit {
+type ProportionItemType = {
+	breakpoint: number
 	proportion: number
+}
+class RemFit {
+	proportion: number | ProportionItemType[]
 	useDpr?: boolean
 
-	constructor(proportion: number, useDpr?: boolean) {
+	constructor(proportion: number | ProportionItemType[], useDpr?: boolean) {
 		this.proportion = proportion
 		this.useDpr = useDpr
 		this.__checkParams()

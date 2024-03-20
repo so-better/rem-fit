@@ -7,7 +7,19 @@
 import RemFit from '../src'
 export default {
 	mounted() {
-		const remFit = new RemFit(7.5, true)
+		const remFit = new RemFit(
+			[
+				{
+					breakpoint: 0,
+					proportion: 7.5
+				},
+				{
+					breakpoint: 600,
+					proportion: 15
+				}
+			],
+			true
+		)
 		remFit.init()
 	},
 	methods: {
