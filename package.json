@@ -1,9 +1,9 @@
 {
 	"name": "rem-fit",
-	"version": "1.6.4",
+	"version": "1.6.5",
 	"private": false,
 	"type": "module",
-	"author": "ling0523",
+	"author": "so-better",
 	"main": "lib/rem-fit.umd.js",
 	"module": "lib/rem-fit.es.js",
 	"types": "lib/index.d.ts",
@@ -34,6 +34,6 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ling0523/rem-fit"
+		"url": "https://github.com/so-better/rem-fit"
 	}
 }
