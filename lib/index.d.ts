@@ -11,4 +11,4 @@ declare class RemFit {
     init(): void;
     static remove(): void;
 }
-export default RemFit;
+export { RemFit, RemFit as default };

@@ -39,6 +39,14 @@ export default defineConfig({
             {
               text: '快速上手',
               link: '/guide/quick-start'
+            },
+            {
+              text: '响应式适配',
+              link: '/guide/response'
+            },
+            {
+              text: 'API',
+              link: '/guide/apis'
             }
           ]
         }
