@@ -54,17 +54,17 @@ npm install rem-fit@1.6.6
 ```
 
 ```bash [yarn]
-yarn install rem-fit
+yarn add rem-fit
 
 # 安装指定版本
-yarn install rem-fit@1.6.6
+yarn add rem-fit@1.6.6
 ```
 
 ```bash [pnpm]
-pnpm install rem-fit
+pnpm add rem-fit
 
 # 安装指定版本
-pnpm install rem-fit@1.6.6
+pnpm add rem-fit@1.6.6
 ```
 
 :::
