@@ -38,7 +38,7 @@ const remFit = new RemFit(proportion, useDpr)
 
 ##### useDpr <Badge type="danger" text="boolean" />
 
-否考虑设备 `dpr`，即设备物理像素与逻辑像素比，默认为 `false`
+是否考虑设备 `dpr`，即设备物理像素与逻辑像素比，默认为 `false`
 
 ## 示例
 

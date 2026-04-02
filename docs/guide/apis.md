@@ -32,12 +32,12 @@ title: API
 - 类型
 
   ```ts
-  remove(): void
+  static remove(): void
   ```
 
 - 详细信息
 
-  该方法 `RemFit` 的类对象方法，不是实例对象方法
+  该方法是 `RemFit` 的类对象方法，不是实例对象方法
 
   创建多个 `remFit` 对象实例并且调用了多个其 `init` 方法，`remove` 方法都可以重置，因为本质上它的重置是对 `html` 和 `meta` 标签的更改，与具体的某个 `remFit` 对象实例无关
 

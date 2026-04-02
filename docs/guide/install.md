@@ -4,7 +4,7 @@ title: 安装
 
 # 安装
 
-## 下载 rem-fit 本地到使用
+## 下载 rem-fit 到本地使用
 
 - 下载地址：[rem-fit](https://registry.npmmirror.com/rem-fit/download/rem-fit-1.6.6.tgz)
 - 下载完成后最终解压得到一个 package 文件夹，进入 package 文件夹后，将 package 目录下的整个 lib 目录拷贝到你的项目下
@@ -36,7 +36,7 @@ title: 安装
 ```html
 <!-- 使用CDN上的es模块构建版本 -->
 <script type="module">
-  import { data } from 'https://unpkg.com/rem-fit/lib/rem-fit.es.js'
+  import { RemFit } from 'https://unpkg.com/rem-fit/lib/rem-fit.es.js'
 </script>
 ```
 

@@ -10,7 +10,7 @@ title: 响应式适配
 
 数组中的每一项都是一个对象，包含如下属性：
 
-- `breakpoint`：屏幕宽度，即当屏幕大于此宽度时对应的 `proportion` 生效
+- `breakpoint`：屏幕宽度，即当屏幕大于等于此宽度时对应的 `proportion` 生效
 
 - `proportion`：屏幕宽度的 `rem` 值
 
